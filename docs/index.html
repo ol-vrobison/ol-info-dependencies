@@ -53,7 +53,7 @@
 {id: "n1812" , label:"DMM"},
 {id: "n1813" , label:"DSFeedExtractor"},
 {id: "n1815" , label:"Genesis"},
-{id: "n1816" , label:"Gmf"},
+{id: "n1816" , label:"Gmf", url:"https://github.com/KAR-AUTO/ol-gmf"},
 {id: "n1817" , label:"HyundaiKia"},
 {id: "n1818" , label:"IdealUI"},
 {id: "n1819" , label:"LES", chosen: { label: false, edge: changeChosenEdgeColor }},
@@ -209,6 +209,12 @@ var changeChosenEdgeColor =
           arrows: {to : true }
         }};
   var network = new vis.Network(container, data, options);
+   network.on("doubleClick", function (params) {
+        if (params.nodes.length === 1) {
+            var node = nodes.get(params.nodes[0]);
+            window.open(node.url, '_blank');
+        }
+    });
 </script>
 
 
